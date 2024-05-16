@@ -11,7 +11,8 @@ func animate_player_sprite(delta:float):
   var angle := vel_h_axis.angle_to(h_axis)
   var skew_direction := signf(cos(angle))
   var skew_intensity := -PI/16.0
-  s.skew = lerp(s.skew, skew_direction * skew_intensity * vel_ratio_from_max, delta)
+  var skew_per_frame := 5.0
+  s.skew = lerp(s.skew, skew_direction * skew_intensity * vel_ratio_from_max, delta * skew_per_frame)
 
 func _process(delta: float) -> void:
   animate_player_sprite(delta)

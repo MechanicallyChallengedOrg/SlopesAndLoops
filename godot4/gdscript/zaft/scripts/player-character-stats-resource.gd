@@ -24,7 +24,7 @@ func vel_rel_v() -> Vector2:
 func up_angle() -> float:
   return rad_to_deg(up.angle_to(Vector2.RIGHT))
 
-var state := STATE.Initial :
+@export var state := STATE.Initial :
   set(v):
     if state == v: return
     state_prev = state
@@ -32,7 +32,7 @@ var state := STATE.Initial :
 var state_prev := STATE.Initial
 
 # real world
-var velocity := Vector2.ZERO :
+@export var velocity := Vector2.ZERO :
   set(v):
     if velocity == v: return
     velocity_prev = velocity
@@ -44,16 +44,15 @@ var up := Vector2.UP :
     up_prev = up
     up = v
 var up_prev := Vector2.UP
-var facing_prev := Vector2.RIGHT
-var g_accel := Vector2(0.0, 128.0)
+@export var g_accel := Vector2(0.0, 128.0)
 
 # relative to player
-var max_vel_air := 8.0 * Vector2(128.0, 256.0)
-var max_vel_ground := 8.0 * Vector2(128.0, 0.0)
-var input_accel_ground := 4.0 * Vector2(128.0, 0.0)
-var input_accel_air := 2.0 * Vector2(128.0, 0.0)
-var frict_ground := Vector2(50.0, 0.0)
-var frict_air := Vector2(5.0, 0.0)
+@export var max_vel_air := 8.0 * Vector2(128.0, 256.0)
+@export var max_vel_ground := 8.0 * Vector2(128.0, 0.0)
+@export var input_accel_ground := 4.0 * Vector2(128.0, 0.0)
+@export var input_accel_air := 2.0 * Vector2(128.0, 0.0)
+@export var frict_ground := Vector2(5.0, 0.0)
+@export var frict_air := Vector2(5.0, 0.0)
 
 func _to_string() -> String:
   return var_to_str({

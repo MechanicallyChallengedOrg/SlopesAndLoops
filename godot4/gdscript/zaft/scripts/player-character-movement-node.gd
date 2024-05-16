@@ -38,7 +38,7 @@ func snap_to_collision_point_if_needed(colliding_ray:RayCast2D):
 func physics_process_grounded(delta:float):
   var colliding_ray := get_prioritized_ground_collision()
   if colliding_ray == null: return may_leave_floor()
-  player.velocity = bound_velocity(player.velocity + accel_per_frame(delta))
+  player.velocity = bound_velocity(player.velocity, accel_per_frame(delta), frict_per_frame(delta))
   rotate_if_needed(colliding_ray)
   snap_to_collision_point_if_needed(colliding_ray)
   player.move_and_slide()
@@ -76,10 +76,16 @@ func may_snap_to_floor():
   if player.ray_center_down.is_colliding():
     player.stats.state = player.stats.STATE.Grounded
 
-func bound_velocity(vel:Vector2) -> Vector2:
+func bound_velocity(v1:=Vector2.ZERO,v2:=Vector2.ZERO,v3:=Vector2.ZERO) -> Vector2:
+  var vel = Vector2.ZERO + v1 + v2 + v3
   if vel.length() > player.stats.max_vel_ground.length():
     return vel.normalized() * player.stats.max_vel_ground.x
   return vel
+
+# real world xy deceleration (delta vel) per frame
+func frict_per_frame(delta):
+  if not is_zero_approx(player.input.h) or is_zero_approx(player.velocity.length()): return Vector2.ZERO
+  return Vector2(player.stats.frict_ground.x * player.velocity.rotated(PI) * delta)
 
 # real world xy acceleration (delta vel) per frame
 func accel_per_frame(delta:float) -> Vector2:
@@ -89,7 +95,6 @@ func accel_per_frame(delta:float) -> Vector2:
 func h_accel() -> Vector2:
   var result := Vector2.ZERO
   if is_zero_approx(player.input.h) and not is_zero_approx(player.velocity.length()):
-    # result = Vector2(player.stats.frict_ground.x * sign(player.velocity) * -1.0)
     pass
   else:
     result = Vector2(player.input.h * player.stats.input_accel_ground.x, 0.0)
