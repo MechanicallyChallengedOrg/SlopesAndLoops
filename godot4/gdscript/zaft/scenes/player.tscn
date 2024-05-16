@@ -28,6 +28,7 @@ script = ExtResource("4_npj3u")
 
 [node name="Head" type="Sprite2D" parent="Visual"]
 texture = ExtResource("1_6hrq7")
+offset = Vector2(0, 2)
 
 [node name="Rays" type="Node2D" parent="."]
 

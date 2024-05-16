@@ -77,7 +77,9 @@ func may_snap_to_floor():
     player.stats.state = player.stats.STATE.Grounded
 
 func bound_velocity(vel:Vector2) -> Vector2:
-  return vel.clamp(-player.stats.max_vel_ground, player.stats.max_vel_ground)
+  if vel.length() > player.stats.max_vel_ground.length():
+    return vel.normalized() * player.stats.max_vel_ground.x
+  return vel
 
 # real world xy acceleration (delta vel) per frame
 func accel_per_frame(delta:float) -> Vector2:
@@ -86,8 +88,8 @@ func accel_per_frame(delta:float) -> Vector2:
 # acceleration (delta vel) per frame alongside the player relative horizontal axis
 func h_accel() -> Vector2:
   var result := Vector2.ZERO
-  if is_zero_approx(player.input.h) and not is_zero_approx(player.velocity.x):
-    # result = Vector2(player.stats.frict_ground.x * sign(player.velocity.x) * -1.0, 0.0)
+  if is_zero_approx(player.input.h) and not is_zero_approx(player.velocity.length()):
+    # result = Vector2(player.stats.frict_ground.x * sign(player.velocity) * -1.0)
     pass
   else:
     result = Vector2(player.input.h * player.stats.input_accel_ground.x, 0.0)

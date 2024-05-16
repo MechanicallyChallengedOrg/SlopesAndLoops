@@ -28,7 +28,7 @@ func _to_string() -> String:
   return var_to_str({
     "h":h,
     "v":v,
-    "xy":hv,
+    "hv":hv,
     "jump_released":jump_released,
     "jump_held":jump_held,
     "jump_pressed":jump_pressed

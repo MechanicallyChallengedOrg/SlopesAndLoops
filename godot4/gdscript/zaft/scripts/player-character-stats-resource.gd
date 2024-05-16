@@ -10,7 +10,7 @@ func should_apply_gravity() -> bool:
   return state == STATE.Airborne
 
 func axis_rel_h() -> Vector2:
-  return up.rotated(-PI/2.0)
+  return up.rotated(PI/2.0)
 
 func axis_rel_v() -> Vector2:
   return up.rotated(PI)
@@ -22,7 +22,7 @@ func vel_rel_v() -> Vector2:
   return velocity.project(axis_rel_v())
 
 func up_angle() -> float:
-  return rad_to_deg(Vector2.RIGHT.angle_to(up))
+  return rad_to_deg(up.angle_to(Vector2.RIGHT))
 
 var state := STATE.Initial :
   set(v):
@@ -48,22 +48,24 @@ var facing_prev := Vector2.RIGHT
 var g_accel := Vector2(0.0, 128.0)
 
 # relative to player
-var max_vel_air := Vector2(10.0, 10.0)
-var max_vel_ground := 8.0 * Vector2(128.0, 128.0)
-var input_accel_ground := 4.0 * Vector2(128.0, 128.0)
-var input_accel_air := Vector2(10.0, 10.0)
-var frict_ground := Vector2(50.0, 50.0)
-var frict_air := Vector2(5.0, 5.0)
+var max_vel_air := 8.0 * Vector2(128.0, 256.0)
+var max_vel_ground := 8.0 * Vector2(128.0, 0.0)
+var input_accel_ground := 4.0 * Vector2(128.0, 0.0)
+var input_accel_air := 2.0 * Vector2(128.0, 0.0)
+var frict_ground := Vector2(50.0, 0.0)
+var frict_air := Vector2(5.0, 0.0)
 
 func _to_string() -> String:
   return var_to_str({
     "velocity":velocity,
+    "|velocity|":velocity.length(),
     "vel_rel_h":vel_rel_h(),
     "vel_rel_v":vel_rel_v(),
     "axis_rel_h":axis_rel_h(),
     "axis_rel_v":axis_rel_v(),
     "should_apply_gravity":should_apply_gravity(),
     "velocity_prev":velocity_prev,
+    "|velocity_prev|":velocity_prev.length(),
     "up":up,
     "up_prev":up_prev,
     "up_angle":up_angle(),
