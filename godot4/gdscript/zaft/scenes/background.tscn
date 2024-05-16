@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://canf3gh3vrryl"]
+
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="1_fjhn8"]
+[ext_resource type="Shader" path="res://shaders/godot-background.gdshader" id="1_o1jpl"]
+[ext_resource type="Script" path="res://scripts/background-scene.gd" id="1_rwqwx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdqfj"]
+shader = ExtResource("1_o1jpl")
+shader_parameter/target_position = Vector2(0, 0)
+shader_parameter/parallax_scale = 0.1
+
+[node name="Background" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwqwx")
+
+[node name="Godot" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_mdqfj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fjhn8")
+expand_mode = 1
+stretch_mode = 1

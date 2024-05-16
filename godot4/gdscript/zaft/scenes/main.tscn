@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsx7krl275h86"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_auwbs"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_auwbs")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="Level" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Pickups" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Debug" type="CanvasLayer" parent="."]
