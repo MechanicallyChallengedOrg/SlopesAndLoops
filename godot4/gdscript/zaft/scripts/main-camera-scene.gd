@@ -3,7 +3,7 @@ class_name MainCameraScene extends Camera2D
 @export var follow_node : Node2D :
   set(n): follow_node = n; set_process(follow_node != null)
 
-@export var follow_speed : float = 10000.0
+@export var follow_speed : float = 100.0
 
 func _ready() -> void:
   set_process(follow_node != null)

@@ -32,6 +32,18 @@ texture = ExtResource("1_6hrq7")
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="CenterDown" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, 63)
+target_position = Vector2(0, 65)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="LeftDown" type="RayCast2D" parent="Rays"]
+position = Vector2(-64, 0)
+target_position = Vector2(0, 64)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RightDown" type="RayCast2D" parent="Rays"]
+position = Vector2(64, 0)
+target_position = Vector2(0, 64)
 collide_with_areas = true
 collide_with_bodies = false
