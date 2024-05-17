@@ -3,7 +3,6 @@ class_name PolygonColliderSetupNode extends Node2D
 func copy_polygons_to_bodies(polygons:Node2D):
   for poly in polygons.get_children():
     if not poly is Polygon2D: continue
-    print(poly)
     var body := StaticBody2D.new()
     add_child(body)
     copy_polygon_to_body(body,poly)

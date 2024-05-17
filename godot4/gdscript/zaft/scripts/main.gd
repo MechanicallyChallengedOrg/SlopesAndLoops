@@ -21,7 +21,6 @@ func _ready() -> void:
   demo_camera.follow_node = demo_player
   demo_background.follow_node = demo_player
   background.add_child(demo_background)
-  demo_player.position = Vector2.UP * 256.0
   level.add_child(demo_level)
   level.add_child(demo_player)
   level.add_child(demo_camera)
