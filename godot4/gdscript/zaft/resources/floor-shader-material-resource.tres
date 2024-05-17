@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://3p58vxj217eb"]
+
+[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_5qejc"]
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="2_ckmog"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_5qejc")
+shader_parameter/target_position = Vector2(0, 0)
+shader_parameter/parallax_scale = 0.1
+shader_parameter/godot_tex = ExtResource("2_ckmog")

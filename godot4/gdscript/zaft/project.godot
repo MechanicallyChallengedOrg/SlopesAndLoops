@@ -69,5 +69,3 @@ environment/glow/upscale_mode=0
 environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 viewport/hdr_2d=true
-2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true

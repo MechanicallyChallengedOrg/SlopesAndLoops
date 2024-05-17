@@ -1,4 +1,4 @@
-extends Node
+class_name AutoloadPaths extends Node
 
 func main() -> MainScene: return get_node("/root/Main")
 func background() -> CanvasLayer: return get_node("/root/Main/Background")

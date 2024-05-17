@@ -1,28 +1,46 @@
-[gd_scene load_steps=7 format=3 uid="uid://by34vi4md0lny"]
+[gd_scene load_steps=10 format=3 uid="uid://by34vi4md0lny"]
 
 [ext_resource type="Script" path="res://scripts/player/character-scene.gd" id="1_2u3n7"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="1_6hrq7"]
-[ext_resource type="Script" path="res://scripts/player/movement-node.gd" id="2_5dd72"]
 [ext_resource type="Script" path="res://scripts/player/input-node.gd" id="3_bvyws"]
 [ext_resource type="Script" path="res://scripts/player/debug-node.gd" id="4_npj3u"]
 [ext_resource type="Script" path="res://scripts/player/animation-node.gd" id="4_t23to"]
+[ext_resource type="Script" path="res://scripts/player/state/airborne-node.gd" id="5_ub4sk"]
+[ext_resource type="Script" path="res://scripts/player/state/initial-node.gd" id="6_pqp8b"]
+[ext_resource type="Script" path="res://scripts/player/state/grounded-node.gd" id="7_7esna"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vk3y"]
+radius = 48.0
+height = 128.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2u3n7")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+z_index = 2
+shape = SubResource("CapsuleShape2D_3vk3y")
 
 [node name="Logic" type="Node" parent="."]
 
 [node name="Input" type="Node" parent="Logic"]
 script = ExtResource("3_bvyws")
 
-[node name="Movement" type="Node" parent="Logic"]
-script = ExtResource("2_5dd72")
-
 [node name="Animation" type="Node" parent="Logic"]
 script = ExtResource("4_t23to")
 
 [node name="Debug" type="Node" parent="Logic"]
 script = ExtResource("4_npj3u")
+
+[node name="State" type="Node" parent="Logic"]
+
+[node name="Airborne" type="Node" parent="Logic/State"]
+script = ExtResource("5_ub4sk")
+
+[node name="Initial" type="Node" parent="Logic/State"]
+script = ExtResource("6_pqp8b")
+
+[node name="Grounded" type="Node" parent="Logic/State"]
+script = ExtResource("7_7esna")
 
 [node name="Visual" type="Node2D" parent="."]
 
