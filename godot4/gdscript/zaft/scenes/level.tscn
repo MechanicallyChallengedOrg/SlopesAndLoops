@@ -4,24 +4,4 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="Bottom" type="Node2D" parent="."]
-
-[node name="Floor" parent="Bottom" instance=ExtResource("1_wbgkv")]
-position = Vector2(126, 0)
-
-[node name="Floor2" parent="Bottom" instance=ExtResource("1_wbgkv")]
-position = Vector2(-128, 0)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="Bottom2" type="Node2D" parent="."]
-position = Vector2(0, -1536)
-scale = Vector2(1, -1)
-
-[node name="Floor" parent="Bottom2" instance=ExtResource("1_wbgkv")]
-position = Vector2(126, 0)
-
-[node name="Floor2" parent="Bottom2" instance=ExtResource("1_wbgkv")]
-position = Vector2(-128, 0)
-rotation = 3.14159
-scale = Vector2(1, -1)
+[node name="LoopPrison" parent="." instance=ExtResource("1_wbgkv")]

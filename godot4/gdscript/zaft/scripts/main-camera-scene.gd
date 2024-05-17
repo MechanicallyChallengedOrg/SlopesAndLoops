@@ -8,6 +8,7 @@ class_name MainCameraScene extends Camera2D
 func _ready() -> void:
   set_process(follow_node != null)
   # zoom = Vector2(2, 2)
+  # zoom = Vector2(0.25, 0.25)
 
 func _process(delta: float) -> void:
   global_position = lerp(global_position, follow_node.global_position, min(follow_speed * delta, 1.0))

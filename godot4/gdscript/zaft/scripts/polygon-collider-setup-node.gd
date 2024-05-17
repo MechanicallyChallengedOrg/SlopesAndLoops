@@ -1,10 +1,16 @@
-class_name PolygonColliderSetupNode extends Node
+class_name PolygonColliderSetupNode extends Node2D
 
-@onready var body : StaticBody2D = owner.get_node_or_null("Body")
-@onready var poly : Polygon2D = owner.get_node_or_null("Polygon")
+func copy_polygons_to_bodies(polygons:Node2D):
+  for poly in polygons.get_children():
+    if not poly is Polygon2D: continue
+    print(poly)
+    var body := StaticBody2D.new()
+    add_child(body)
+    copy_polygon_to_body(body,poly)
 
-func copy_polygon_to_body(b:StaticBody2D=body,p:Polygon2D=poly):
+func copy_polygon_to_body(b:StaticBody2D,p:Polygon2D):
   if b == null or p == null : return
+  b.global_position = p.global_position
   var c := CollisionPolygon2D.new()
-  c.polygon = poly.polygon
+  c.polygon = p.polygon
   b.add_child(c)
