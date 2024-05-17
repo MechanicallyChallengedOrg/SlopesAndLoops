@@ -9,16 +9,16 @@
 [ext_resource type="Script" path="res://scripts/player/state/initial-node.gd" id="6_pqp8b"]
 [ext_resource type="Script" path="res://scripts/player/state/grounded-node.gd" id="7_7esna"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vk3y"]
-radius = 48.0
-height = 128.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdi4y"]
+radius = 64.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_2u3n7")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 z_index = 2
-shape = SubResource("CapsuleShape2D_3vk3y")
+shape = SubResource("CircleShape2D_kdi4y")
 
 [node name="Logic" type="Node" parent="."]
 
@@ -51,15 +51,12 @@ offset = Vector2(0, 2)
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="CenterDown" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, 65)
-
-[node name="CenterDownExt" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, 72)
+target_position = Vector2(0, 66)
 
 [node name="LeftDown" type="RayCast2D" parent="Rays"]
 position = Vector2(-64, 0)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 62)
 
 [node name="RightDown" type="RayCast2D" parent="Rays"]
 position = Vector2(64, 0)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 62)

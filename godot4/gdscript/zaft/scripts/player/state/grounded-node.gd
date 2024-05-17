@@ -2,18 +2,23 @@ class_name PlayerCharacterStateGroundedNode extends Node
 
 @onready var player : PlayerCharacterScene = owner
 
-func _ready() -> void:
-  player.after_physics_update.connect(on_after_physics_update)
-
 func _physics_process(delta: float) -> void:
   if player.stats.state != player.stats.STATE.Grounded: return
   physics_process_grounded(delta)
+  player.move_and_slide()
+  process_after_physics_update(delta)
 
 func initiate_jump():
   player.velocity += player.stats.jump_initial_vel.y * player.up_direction
+  player.stats.jump_time = 0.0
   player.move_and_slide()
 
 func transition_to_airborne():
+  if player.ray_left_down.is_colliding() or\
+    player.ray_right_down.is_colliding() or\
+    player.ray_center_down.is_colliding():
+    player.apply_floor_snap()
+    return
   player.stats.state = player.stats.STATE.Airborne
 
 func current_ground_normal() -> Vector2:
@@ -33,9 +38,12 @@ func snap_to_floor_angle_if_needed():
     player.up_direction = player.up_direction.rotated(rotation_delta)
     player.rotate(rotation_delta)
 
-func on_after_physics_update(_delta:float):
-  if player.input.jump_pressed: initiate_jump()
-  if not player.is_on_floor(): return transition_to_airborne()
+func process_after_physics_update(_delta:float):
+  if player.stats.state != player.stats.STATE.Grounded: return
+  if player.input.jump_pressed:
+    initiate_jump()
+  if not player.is_on_floor():
+    return transition_to_airborne()
   snap_to_floor_angle_if_needed()
 
 func velocity_relative_to_absolute_axis() -> Vector2:

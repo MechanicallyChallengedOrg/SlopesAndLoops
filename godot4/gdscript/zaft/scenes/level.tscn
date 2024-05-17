@@ -1,34 +1,27 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfq2wpblianl0"]
 
-[ext_resource type="PackedScene" uid="uid://ih6x3irfv763" path="res://scenes/floor.tscn" id="1_wbgkv"]
+[ext_resource type="PackedScene" uid="uid://ih6x3irfv763" path="res://scenes/loop_prison.tscn" id="1_wbgkv"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Floor" parent="." instance=ExtResource("1_wbgkv")]
+[node name="Bottom" type="Node2D" parent="."]
 
-[node name="Floor6" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(0, -2002)
+[node name="Floor" parent="Bottom" instance=ExtResource("1_wbgkv")]
+position = Vector2(126, 0)
 
-[node name="Floor7" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(-1037, -785)
-rotation = 1.57079
+[node name="Floor2" parent="Bottom" instance=ExtResource("1_wbgkv")]
+position = Vector2(-128, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="Floor8" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(971, -863)
-rotation = 1.57079
+[node name="Bottom2" type="Node2D" parent="."]
+position = Vector2(0, -1536)
+scale = Vector2(1, -1)
 
-[node name="Floor2" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(-620, -4)
-rotation = 0.785397
+[node name="Floor" parent="Bottom2" instance=ExtResource("1_wbgkv")]
+position = Vector2(126, 0)
 
-[node name="Floor3" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(630, -4)
-rotation = 2.35619
-
-[node name="Floor4" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(-620, -1874)
-rotation = -0.785397
-
-[node name="Floor5" parent="." instance=ExtResource("1_wbgkv")]
-position = Vector2(630, -1874)
-rotation = 0.785397
+[node name="Floor2" parent="Bottom2" instance=ExtResource("1_wbgkv")]
+position = Vector2(-128, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)

@@ -11,18 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ht3bs")
 
-[node name="TopLeft" type="Control" parent="."]
+[node name="TopLeft" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayerStats" type="Label" parent="TopLeft"]
-layout_mode = 1
-offset_right = 40.0
+offset_right = 1.0
 offset_bottom = 23.0
 
-[node name="BottomLeft" type="Control" parent="."]
+[node name="PlayerStats" type="Label" parent="TopLeft"]
+layout_mode = 2
+
+[node name="BottomLeft" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -32,10 +29,4 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="PlayerInput" type="Label" parent="BottomLeft"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 40.0
-grow_vertical = 0
+layout_mode = 2
