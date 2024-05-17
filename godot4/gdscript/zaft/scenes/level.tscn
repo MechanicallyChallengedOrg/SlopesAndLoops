@@ -2,53 +2,53 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D4" type="Area2D" parent="."]
+[node name="Area2D4" type="StaticBody2D" parent="."]
 position = Vector2(-66, -7576)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D4"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Area2D2" type="StaticBody2D" parent="."]
 position = Vector2(-2711, -1088)
 rotation = 0.785397
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D5" type="Area2D" parent="."]
+[node name="Area2D5" type="StaticBody2D" parent="."]
 position = Vector2(2672, -6438)
 rotation = 0.785397
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D5"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D6" type="Area2D" parent="."]
+[node name="Area2D6" type="StaticBody2D" parent="."]
 position = Vector2(2661, -1099)
 rotation = -0.785397
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D6"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D8" type="Area2D" parent="."]
+[node name="Area2D8" type="StaticBody2D" parent="."]
 position = Vector2(-2764, -6500)
 rotation = -0.785397
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D8"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D3" type="Area2D" parent="."]
+[node name="Area2D3" type="StaticBody2D" parent="."]
 position = Vector2(-3868, -3753)
 rotation = 1.57079
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D3"]
 polygon = PackedVector2Array(-1600, -100, -1600, 100, 1600, 100, 1600, -100)
 
-[node name="Area2D7" type="Area2D" parent="."]
+[node name="Area2D7" type="StaticBody2D" parent="."]
 position = Vector2(3767, -3700)
 rotation = 1.57079
 

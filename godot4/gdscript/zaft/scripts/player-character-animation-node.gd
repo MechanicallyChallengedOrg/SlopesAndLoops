@@ -5,7 +5,7 @@ class_name PlayerCharacterAnimationNode extends Node
 func animate_player_sprite(delta:float):
   var s : Sprite2D = player.sprite
   var h_axis := player.stats.up.rotated(PI / 2.0)
-  var vel_h_axis := player.stats.velocity.project(h_axis)
+  var vel_h_axis := player.velocity.project(h_axis)
   var vel_h_axis_len := vel_h_axis.length()
   var vel_ratio_from_max := vel_h_axis_len / player.stats.max_vel_ground.x
   var angle := vel_h_axis.angle_to(h_axis)

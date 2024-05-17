@@ -34,17 +34,14 @@ offset = Vector2(0, 2)
 
 [node name="CenterDown" type="RayCast2D" parent="Rays"]
 target_position = Vector2(0, 65)
-collide_with_areas = true
-collide_with_bodies = false
+
+[node name="CenterDownExt" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, 72)
 
 [node name="LeftDown" type="RayCast2D" parent="Rays"]
 position = Vector2(-64, 0)
 target_position = Vector2(0, 64)
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="RightDown" type="RayCast2D" parent="Rays"]
 position = Vector2(64, 0)
 target_position = Vector2(0, 64)
-collide_with_areas = true
-collide_with_bodies = false
