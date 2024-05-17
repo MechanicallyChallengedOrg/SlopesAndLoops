@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://by34vi4md0lny"]
 
-[ext_resource type="Script" path="res://scripts/player-character-scene.gd" id="1_2u3n7"]
+[ext_resource type="Script" path="res://scripts/player/character-scene.gd" id="1_2u3n7"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="1_6hrq7"]
-[ext_resource type="Script" path="res://scripts/player-character-movement-node.gd" id="2_5dd72"]
-[ext_resource type="Script" path="res://scripts/player-character-input-node.gd" id="3_bvyws"]
-[ext_resource type="Script" path="res://scripts/player-character-debug-node.gd" id="4_npj3u"]
-[ext_resource type="Script" path="res://scripts/player-character-animation-node.gd" id="4_t23to"]
+[ext_resource type="Script" path="res://scripts/player/movement-node.gd" id="2_5dd72"]
+[ext_resource type="Script" path="res://scripts/player/input-node.gd" id="3_bvyws"]
+[ext_resource type="Script" path="res://scripts/player/debug-node.gd" id="4_npj3u"]
+[ext_resource type="Script" path="res://scripts/player/animation-node.gd" id="4_t23to"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2u3n7")
