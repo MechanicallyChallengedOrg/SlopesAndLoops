@@ -39,6 +39,7 @@ func snap_to_floor_angle_if_needed():
   if abs(rotation_delta_in_degrees) >= 10:
     var rotation_delta_in_degrees_snapped_to_5 = snappedi(rotation_delta_in_degrees, 5)
     var snapped_rotation_delta_in_rads := deg_to_rad(rotation_delta_in_degrees_snapped_to_5)
+    player.velocity = player.velocity.rotated(snapped_rotation_delta_in_rads)
     player.up_direction = normal
     player.rotate(snapped_rotation_delta_in_rads)
 
