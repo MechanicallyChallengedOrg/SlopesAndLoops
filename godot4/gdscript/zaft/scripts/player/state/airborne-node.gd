@@ -12,7 +12,11 @@ func _physics_process(delta: float) -> void:
 
 func process_after_physics_update(_delta:float):
   if player.stats.state != player.stats.STATE.Airborne: return
-  if player.is_on_floor(): player.stats.state = player.stats.STATE.Grounded
+  if player.is_on_floor(): 
+    var collision := player.get_last_slide_collision()
+    var collider := (collision.get_collider() as LoopyStaticBody2D) if collision != null else null
+    if collider.disable_loop_collision(): pass
+    else: player.stats.state = player.stats.STATE.Grounded
 
 func physics_process_airborne(delta:float):
   var rel_vel := player.velocity.rotated(-player.rotation)

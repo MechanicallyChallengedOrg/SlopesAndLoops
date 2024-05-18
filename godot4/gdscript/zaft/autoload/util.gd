@@ -5,18 +5,6 @@ func h_only(v:Vector2)->Vector2:return Vector2(v.x, 0.0)
 func dict_to_debug_str(d:Dictionary)->String:return var_to_str(d)\
   .replace("{","").replace("}","").replace('"',"").replace(",\n","\n").replace("Vector2", "").strip_edges()
 
-func enable_wall(p:Polygon2D,b:StaticBody2D):
-  if p == null or b == null: return
-  var m : ShaderMaterial = p.material
-  m.set_shader_parameter("alpha_multiplier", __config.ALPHA_MULTIPLIER_LOOP_ON)
-  b.collision_layer = __config.BIT_LAYER.Loop
-
-func disable_wall(p:Polygon2D,b:StaticBody2D):
-  if p == null or b == null: return
-  var m : ShaderMaterial = p.material
-  m.set_shader_parameter("alpha_multiplier", __config.ALPHA_MULTIPLIER_LOOP_OFF)
-  b.collision_layer = __config.BIT_LAYER.None
-
 # /!\ DISCLAIMER /!\
 # generally having this level of tight coupling with the tree structure
 # is a TERRIBLE idea, only doing this here because it's a tiny demo
