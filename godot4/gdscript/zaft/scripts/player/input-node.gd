@@ -21,5 +21,5 @@ func _to_string() -> String:
     "jump_released":jump_released,
     "jump_held":jump_held,
     "jump_pressed":jump_pressed
-  })
+  }).replace("{","").replace("}","").replace('"',"").replace(",","").strip_edges()
 

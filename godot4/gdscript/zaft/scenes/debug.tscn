@@ -18,6 +18,13 @@ offset_bottom = 23.0
 
 [node name="PlayerStats" type="Label" parent="TopLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.70455, 0.847754, 0.995804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 24
 
 [node name="BottomLeft" type="PanelContainer" parent="."]
 layout_mode = 1

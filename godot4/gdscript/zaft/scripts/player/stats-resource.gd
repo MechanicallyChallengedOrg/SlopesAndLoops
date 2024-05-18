@@ -9,8 +9,8 @@ var player : PlayerCharacterScene
     if state == v: return
     state_prev = state; state = v
     print("state: %s => %s" % [STATE.find_key(state_prev), STATE.find_key(state)])
-
 @export var state_prev := STATE.Initial
+@export var sprite_size := Vector2(128.0, 128.0)
 @export var jump_peak := 0.05
 @export var jump_time := jump_peak
 @export var g_accel := 16.0 * Vector2(0.0, 128.0)
@@ -22,23 +22,17 @@ var player : PlayerCharacterScene
 @export var frict_ground := Vector2(5.0, 0.0)
 @export var frict_air := Vector2(5.0, 0.0)
 
+
+const snap := Vector2(0.1, 0.1)
 func _to_string() -> String:
   return var_to_str({
-    "floor_normal": player.get_floor_normal(),
-    "rotation": player.rotation,
-    "up": player.up_direction,
-    "real_v": player.get_real_velocity(),
-    "v": player.velocity,
+    "floor_normal": player.get_floor_normal().snapped(snap),
+    "rotation": roundi(rad_to_deg(player.rotation)),
+    "up": player.up_direction.snapped(snap),
+    "vel_input": player.velocity.snapped(snap),
+    "vel_real": player.get_real_velocity().snapped(snap),
     "rays": [player.ray_left_down.is_colliding(), player.ray_center_down.is_colliding(), player.ray_right_down.is_colliding()],
-    "jump_peak": jump_peak,
-    "jump_time": jump_time,
-    "max_vel_ground":max_vel_ground,
-    "max_vel_air":max_vel_air,
-    "input_accel_ground":input_accel_ground,
-    "input_accel_air":input_accel_air,
-    "frict_ground":frict_ground,
-    "frict_air":frict_air,
-    "g_accel":g_accel,
+    "jump": "%s (%s)" % [jump_time, jump_peak],
     "state": "%s => %s" % [STATE.find_key(state_prev), STATE.find_key(state)]
-  })
+  }).replace("{","").replace("}","").replace('"',"").replace(",\n","\n").replace("Vector2", "").strip_edges()
 

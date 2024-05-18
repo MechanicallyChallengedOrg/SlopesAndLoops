@@ -7,8 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
 shader = ExtResource("1_1wm6b")
-shader_parameter/target_position = Vector2(0, 0)
-shader_parameter/parallax_scale = 0.1
+shader_parameter/alpha_multiplier = 1.0
 
 [node name="LoopPrison" type="Node2D"]
 material = SubResource("ShaderMaterial_sjhay")
