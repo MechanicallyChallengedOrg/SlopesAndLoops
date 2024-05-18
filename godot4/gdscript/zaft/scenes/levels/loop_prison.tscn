@@ -1,18 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://ih6x3irfv763"]
 
-[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_uq2x5"]
-[ext_resource type="Script" path="res://scripts/loop-prison-scene.gd" id="2_te8p7"]
-[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_j564a"]
-[ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_ip60v"]
+[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_icjgw"]
+[ext_resource type="Script" path="res://scripts/loop-prison-scene.gd" id="2_vowjo"]
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_6g1xm"]
+[ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_g5ep0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
-shader = ExtResource("1_uq2x5")
+shader = ExtResource("1_icjgw")
 shader_parameter/target_position = Vector2(0, 0)
 shader_parameter/parallax_scale = 0.1
 
 [node name="LoopPrison" type="Node2D"]
 material = SubResource("ShaderMaterial_sjhay")
-script = ExtResource("2_te8p7")
+script = ExtResource("2_vowjo")
 
 [node name="Polygons" type="Node2D" parent="."]
 use_parent_material = true
@@ -21,7 +21,7 @@ use_parent_material = true
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(0, 384)
-texture = ExtResource("3_j564a")
+texture = ExtResource("3_6g1xm")
 texture_scale = Vector2(2, 2)
 polygon = PackedVector2Array(-1280, 128, -1280, 256, 1280, 256, 1280, 128)
 
@@ -29,22 +29,22 @@ polygon = PackedVector2Array(-1280, 128, -1280, 256, 1280, 256, 1280, 128)
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(0, -768)
-texture = ExtResource("3_j564a")
+texture = ExtResource("3_6g1xm")
 texture_scale = Vector2(2, 2)
 polygon = PackedVector2Array(-512, 128, -512, 256, 512, 256, 512, 128)
 
 [node name="WallRight" type="Polygon2D" parent="Polygons"]
 texture_repeat = 2
 use_parent_material = true
-texture = ExtResource("3_j564a")
+texture = ExtResource("3_6g1xm")
 texture_scale = Vector2(2, 2)
 polygon = PackedVector2Array(128, -512, 512, -128.683, 512, 128, 128, 512, 640, 512, 640, -512)
 
 [node name="WallLeft" type="Polygon2D" parent="Polygons"]
 texture_repeat = 2
 use_parent_material = true
-texture = ExtResource("3_j564a")
+texture = ExtResource("3_6g1xm")
 texture_scale = Vector2(2, 2)
 polygon = PackedVector2Array(-640, -512, -640, 512, -128, 512, -512, 126.873, -512, -131.282, -128, -512)
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("4_ip60v")]
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_g5ep0")]

@@ -4,6 +4,7 @@ func copy_polygons_to_bodies(polygons:Node2D):
   for poly in polygons.get_children():
     if not poly is Polygon2D: continue
     var body := StaticBody2D.new()
+    body.name = poly.name
     add_child(body)
     copy_polygon_to_body(body,poly)
 
