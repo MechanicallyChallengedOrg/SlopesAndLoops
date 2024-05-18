@@ -1,23 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkn25m1mglb26"]
+[gd_scene load_steps=9 format=3 uid="uid://bkn25m1mglb26"]
 
-[ext_resource type="Script" path="res://scripts/loop-scene.gd" id="2_b7o20"]
+[ext_resource type="Script" path="res://scripts/levels/loop-scene.gd" id="2_b7o20"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_skivs"]
 [ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_aj5r7"]
-[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="4_am6ip"]
-[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="4_hgch3"]
+[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="4_utdq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
-shader = ExtResource("4_hgch3")
+shader = ExtResource("4_utdq0")
 shader_parameter/alpha_multiplier = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuexh"]
 resource_local_to_scene = true
-shader = ExtResource("4_am6ip")
+shader = ExtResource("4_utdq0")
 shader_parameter/alpha_multiplier = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2r7s"]
 resource_local_to_scene = true
-shader = ExtResource("4_am6ip")
+shader = ExtResource("4_utdq0")
 shader_parameter/alpha_multiplier = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nedja"]
@@ -69,3 +68,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallActivationZone"]
 shape = SubResource("RectangleShape2D_nedja")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -200.0
+offset_top = 104.0
+offset_right = 198.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 24
+text = "Unlike the prison scene,
+This loop has logic setup
+so the walls are enabled/disabled
+at the correct moment.
+So the player can come in and out."

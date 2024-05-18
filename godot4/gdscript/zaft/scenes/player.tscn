@@ -53,11 +53,14 @@ offset = Vector2(0, 2)
 
 [node name="CenterDown" type="RayCast2D" parent="Rays"]
 target_position = Vector2(0, 66)
+collision_mask = 12
 
 [node name="LeftDown" type="RayCast2D" parent="Rays"]
 position = Vector2(-64, 0)
 target_position = Vector2(0, 62)
+collision_mask = 12
 
 [node name="RightDown" type="RayCast2D" parent="Rays"]
 position = Vector2(64, 0)
 target_position = Vector2(0, 62)
+collision_mask = 12

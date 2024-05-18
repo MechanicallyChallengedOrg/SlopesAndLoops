@@ -24,7 +24,7 @@ func transition_to_airborne():
 func current_ground_normal() -> Vector2:
   var collision := player.get_last_slide_collision()
   var normal := collision.get_normal() if collision else player.get_floor_normal()
-  return normal
+  return normal.snapped(Vector2(0.01, 0.01))
 
 func rotation_delta_relative_to_player_rotation() -> float:
   var normal := current_ground_normal()
@@ -33,10 +33,14 @@ func rotation_delta_relative_to_player_rotation() -> float:
   return rotation_delta
 
 func snap_to_floor_angle_if_needed():
-  var rotation_delta := rotation_delta_relative_to_player_rotation()
-  if abs(rotation_delta) >= 0.1:
-    player.up_direction = player.up_direction.rotated(rotation_delta)
-    player.rotate(rotation_delta)
+  var normal := current_ground_normal()
+  var rotation_delta_in_rads := rotation_delta_relative_to_player_rotation()
+  var rotation_delta_in_degrees = roundi(rad_to_deg(rotation_delta_in_rads))
+  if abs(rotation_delta_in_degrees) >= 10:
+    var rotation_delta_in_degrees_snapped_to_5 = snappedi(rotation_delta_in_degrees, 5)
+    var snapped_rotation_delta_in_rads := deg_to_rad(rotation_delta_in_degrees_snapped_to_5)
+    player.up_direction = normal
+    player.rotate(snapped_rotation_delta_in_rads)
 
 func process_after_physics_update(_delta:float):
   if player.stats.state != player.stats.STATE.Grounded: return

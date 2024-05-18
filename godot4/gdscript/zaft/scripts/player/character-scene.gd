@@ -7,11 +7,8 @@ class_name PlayerCharacterScene extends CharacterBody2D
 @onready var ray_left_down : RayCast2D = $Rays/LeftDown
 @onready var sprite : Sprite2D = $Visual/Head
 
-func _enter_tree() -> void:
-  stats.player = self
-
 func _ready() -> void:
-  floor_max_angle = deg_to_rad(89)
-  floor_constant_speed = deg_to_rad(89)
-  floor_snap_length = 1.5
-  max_slides = 8
+  floor_max_angle = __config.MAX_SLOPE_ANGLE
+  floor_snap_length = __config.SNAP_LENGTH
+  max_slides = __config.MAX_SLIDES
+  floor_constant_speed = true

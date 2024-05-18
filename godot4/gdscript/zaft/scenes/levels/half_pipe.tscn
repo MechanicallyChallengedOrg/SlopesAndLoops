@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dr4as8ceu0vbd"]
 
 [ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_tye5y"]
-[ext_resource type="Script" path="res://scripts/loop-prison-scene.gd" id="2_uq0xq"]
+[ext_resource type="Script" path="res://scripts/levels/loop-prison-scene.gd" id="2_uq0xq"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_0l84j"]
 [ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_pj66l"]
 

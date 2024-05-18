@@ -35,5 +35,12 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="PlayerInput" type="Label" parent="BottomLeft"]
+[node name="VBox" type="VBoxContainer" parent="BottomLeft"]
 layout_mode = 2
+
+[node name="PlayerInput" type="Label" parent="BottomLeft/VBox"]
+layout_mode = 2
+
+[node name="GodotGodotFast" type="CheckButton" parent="BottomLeft/VBox"]
+layout_mode = 2
+text = "Gohddo't Godoht FAST"
