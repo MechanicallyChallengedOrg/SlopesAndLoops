@@ -13,18 +13,20 @@ func initiate_jump():
   player.stats.jump_time = 0.0
   player.move_and_slide()
 
+var count := 0
 func transition_to_airborne():
   if player.ray_left_down.is_colliding() or\
     player.ray_right_down.is_colliding() or\
     player.ray_center_down.is_colliding():
     player.apply_floor_snap()
+    # TODO: Improvements can be made here to have the player stick to very steep down slopes
     return
   player.stats.state = player.stats.STATE.Airborne
 
 func current_ground_normal() -> Vector2:
   var collision := player.get_last_slide_collision()
   var normal := collision.get_normal() if collision else player.get_floor_normal()
-  return normal.snapped(Vector2(0.01, 0.01))
+  return normal
 
 func rotation_delta_relative_to_player_rotation() -> float:
   var normal := current_ground_normal()
@@ -32,24 +34,29 @@ func rotation_delta_relative_to_player_rotation() -> float:
   var rotation_delta := angle - player.rotation
   return rotation_delta
 
+func drop_if_going_too_slow():
+  if abs(player.up_direction.angle_to(Vector2.UP)) >= PI/2.0:
+    if player.velocity.length() <= player.stats.min_vel_loop.x:
+      initiate_jump()
+
 func snap_to_floor_angle_if_needed():
   var normal := current_ground_normal()
   var rotation_delta_in_rads := rotation_delta_relative_to_player_rotation()
   var rotation_delta_in_degrees = roundi(rad_to_deg(rotation_delta_in_rads))
-  if abs(rotation_delta_in_degrees) >= 10:
-    var rotation_delta_in_degrees_snapped_to_5 = snappedi(rotation_delta_in_degrees, 5)
-    var snapped_rotation_delta_in_rads := deg_to_rad(rotation_delta_in_degrees_snapped_to_5)
-    player.velocity = player.velocity.rotated(snapped_rotation_delta_in_rads)
+  if abs(rotation_delta_in_degrees) >= 5:
+    player.velocity = player.velocity.rotated(rotation_delta_in_rads)
     player.up_direction = normal
-    player.rotate(snapped_rotation_delta_in_rads)
+    player.rotate(rotation_delta_in_rads)
 
 func process_after_physics_update(_delta:float):
   if player.stats.state != player.stats.STATE.Grounded: return
   if player.input.jump_pressed:
+    __audio.play_sfx(__audio.SFX_JUMP, randf_range(0.95, 1.05))
     initiate_jump()
   if not player.is_on_floor():
     return transition_to_airborne()
   snap_to_floor_angle_if_needed()
+  drop_if_going_too_slow()
 
 func velocity_relative_to_absolute_axis() -> Vector2:
   var rel_vel := player.velocity.rotated(-player.rotation)

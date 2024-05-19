@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by34vi4md0lny"]
+[gd_scene load_steps=11 format=3 uid="uid://by34vi4md0lny"]
 
 [ext_resource type="Script" path="res://scripts/player/character-scene.gd" id="1_2u3n7"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="1_6hrq7"]
@@ -11,6 +11,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdi4y"]
 radius = 64.0
+
+[sub_resource type="Curve" id="Curve_2w7kj"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -45,9 +50,41 @@ script = ExtResource("7_7esna")
 
 [node name="Visual" type="Node2D" parent="."]
 
+[node name="Party" type="CPUParticles2D" parent="Visual"]
+emitting = false
+amount = 16
+texture = ExtResource("1_6hrq7")
+gravity = Vector2(0, 0)
+angular_velocity_max = 720.0
+color = Color(1, 1, 1, 0.317647)
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_2w7kj")
+
 [node name="Head" type="Sprite2D" parent="Visual"]
 texture = ExtResource("1_6hrq7")
 offset = Vector2(0, 2)
+
+[node name="Land" type="CPUParticles2D" parent="Visual"]
+position = Vector2(0, 66)
+emitting = false
+amount = 32
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_6hrq7")
+emission_shape = 3
+emission_rect_extents = Vector2(64, 1)
+direction = Vector2(0, -1)
+initial_velocity_min = 120.0
+initial_velocity_max = 240.0
+angular_velocity_max = 53.93
+radial_accel_min = -4.5
+radial_accel_max = 5.24
+tangential_accel_min = 7.44
+tangential_accel_max = 74.91
+damping_max = 52.435
+scale_amount_min = 0.01
+scale_amount_max = 0.1
 
 [node name="Rays" type="Node2D" parent="."]
 

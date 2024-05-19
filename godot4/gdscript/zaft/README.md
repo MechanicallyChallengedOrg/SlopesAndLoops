@@ -9,7 +9,7 @@ A demo/showcase of implementing loop and slope movement using Godot 4, by ZAFT.
 I know there is a crazy amount of writing out there explaining exactly how that works in sonic.
 But I made sure to avoid reading any of it, as well as not playing any sonic games as part of this.
 
-It was more important/fun to me to give it its own flavor/spin.
+It was more important/fun to me to give it its own flavor/spin/interpretation.
 
 ## How to Use?
 

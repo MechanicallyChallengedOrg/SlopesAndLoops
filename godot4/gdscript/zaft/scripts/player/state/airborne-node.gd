@@ -16,7 +16,10 @@ func process_after_physics_update(_delta:float):
     var collision := player.get_last_slide_collision()
     var collider := (collision.get_collider() as LoopyStaticBody2D) if collision != null else null
     if collider.disable_loop_collision(): pass
-    else: player.stats.state = player.stats.STATE.Grounded
+    else:
+      __audio.play_sfx(__audio.SFX_LAND, randf_range(0.95, 1.05))
+      player.land.emitting = true
+      player.stats.state = player.stats.STATE.Grounded
 
 func physics_process_airborne(delta:float):
   var rel_vel := player.velocity.rotated(-player.rotation)

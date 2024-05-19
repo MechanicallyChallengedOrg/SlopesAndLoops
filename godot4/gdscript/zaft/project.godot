@@ -21,6 +21,7 @@ config/icon="res://assets/icon.svg"
 __config="*res://autoload/config.gd"
 __util="*res://autoload/util.gd"
 __paths="*res://autoload/paths.gd"
+__audio="*res://autoload/audio.gd"
 
 [display]
 

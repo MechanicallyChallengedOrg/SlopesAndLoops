@@ -15,6 +15,7 @@ enum STATE { Initial = 0, Grounded, Airborne, Off, Reset }
 @export var jump_initial_vel := 4.0 * __util.v_only(sprite_size)
 @export var max_vel_air := 16.0 * sprite_size * multiplier
 @export var max_vel_ground := 8.0 * __util.h_only(sprite_size) * multiplier
+@export var min_vel_loop := 6.0 * __util.h_only(sprite_size) * multiplier
 @export var input_accel_ground := 16.0 * __util.h_only(sprite_size) * multiplier
 @export var input_accel_air := 8.0 * __util.h_only(sprite_size) * multiplier
 @export var frict_ground := 0.04 * __util.h_only(sprite_size)
