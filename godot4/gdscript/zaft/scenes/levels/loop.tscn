@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkn25m1mglb26"]
+[gd_scene load_steps=11 format=3 uid="uid://bkn25m1mglb26"]
 
 [ext_resource type="Script" path="res://scripts/levels/loop-scene.gd" id="2_b7o20"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_skivs"]
@@ -21,6 +21,12 @@ shader_parameter/alpha_multiplier = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nedja"]
 size = Vector2(128, 1152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu4h6"]
+size = Vector2(128, 1280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60uon"]
+size = Vector2(128, 1280)
 
 [node name="Loop" type="Node2D"]
 material = SubResource("ShaderMaterial_sjhay")
@@ -80,3 +86,19 @@ This loop has logic setup
 so the walls are enabled/disabled
 at the correct moment.
 So the player can come in and out."
+
+[node name="WallDeactivationZoneLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneLeft"]
+position = Vector2(-704, 0)
+shape = SubResource("RectangleShape2D_iu4h6")
+
+[node name="WallDeactivationZoneRight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneRight"]
+position = Vector2(704, 0)
+shape = SubResource("RectangleShape2D_60uon")

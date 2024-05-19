@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bllckafka1ry1"]
+[gd_scene load_steps=11 format=3 uid="uid://bllckafka1ry1"]
 
 [ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_ymqda"]
 [ext_resource type="Script" path="res://scripts/levels/scenic-scene.gd" id="2_dotdy"]
@@ -22,6 +22,12 @@ shader_parameter/alpha_multiplier = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px6um"]
 size = Vector2(128, 1152)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38ya2"]
+size = Vector2(128, 1280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brpdw"]
+size = Vector2(128, 1280)
+
 [node name="Full" type="Node2D"]
 material = SubResource("ShaderMaterial_sjhay")
 script = ExtResource("2_dotdy")
@@ -43,7 +49,7 @@ use_parent_material = true
 position = Vector2(0, 384)
 texture = ExtResource("3_jnqm2")
 texture_scale = Vector2(2, 2)
-polygon = PackedVector2Array(-3160, -136, -3712, 136, -1664, 136, -2376, -792, -2712, -792)
+polygon = PackedVector2Array(-3712, -192, -5056, 128, -1664, 128, -2160, -248, -2784, -352)
 
 [node name="Ceiling" type="Polygon2D" parent="Polygons"]
 texture_repeat = 2
@@ -84,3 +90,19 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallActivationZone"]
 shape = SubResource("RectangleShape2D_px6um")
+
+[node name="WallDeactivationZoneLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneLeft"]
+position = Vector2(-704, 0)
+shape = SubResource("RectangleShape2D_38ya2")
+
+[node name="WallDeactivationZoneRight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneRight"]
+position = Vector2(704, 0)
+shape = SubResource("RectangleShape2D_brpdw")
