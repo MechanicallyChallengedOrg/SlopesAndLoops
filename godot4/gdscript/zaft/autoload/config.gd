@@ -17,6 +17,9 @@ const SKEW_PER_SEC := 50.0
 const ALPHA_MULTIPLIER_LOOP_OFF := 0.5
 const ALPHA_MULTIPLIER_LOOP_ON := 1.0
 
+# Maximum amount of time the player has between collecting each marker in a loop
+const MARKER_PICKUP_TIMEOUT := 0.7
+
 enum BIT_LAYER {
   None = 0,
   Default = 1,

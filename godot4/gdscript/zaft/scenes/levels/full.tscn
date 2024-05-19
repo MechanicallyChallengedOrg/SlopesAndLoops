@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bllckafka1ry1"]
+[gd_scene load_steps=13 format=3 uid="uid://bllckafka1ry1"]
 
 [ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_ymqda"]
 [ext_resource type="Script" path="res://scripts/levels/scenic-scene.gd" id="2_dotdy"]
 [ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_jnqm2"]
 [ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_co3dd"]
+[ext_resource type="Script" path="res://scripts/loop-pickup-markers-node.gd" id="5_4vsvh"]
+[ext_resource type="PackedScene" uid="uid://btsvpxkdd4wfg" path="res://scenes/loop_pickup_marker.tscn" id="6_ktuoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
 shader = ExtResource("1_ymqda")
@@ -57,7 +59,7 @@ use_parent_material = true
 position = Vector2(0, -768)
 texture = ExtResource("3_jnqm2")
 texture_scale = Vector2(2, 2)
-polygon = PackedVector2Array(-512, 128, -512, 256, 512, 256, 512, 128)
+polygon = PackedVector2Array(-640, 128, -640, 256, 640, 256, 640, 128)
 
 [node name="WallRight" type="Polygon2D" parent="Polygons"]
 texture_repeat = 2
@@ -106,3 +108,42 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneRight"]
 position = Vector2(704, 0)
 shape = SubResource("RectangleShape2D_brpdw")
+
+[node name="Markers" type="Node2D" parent="."]
+script = ExtResource("5_4vsvh")
+
+[node name="LoopPickupMarker" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(96, 480)
+
+[node name="LoopPickupMarker2" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-96, 480)
+
+[node name="LoopPickupMarker3" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-288, 288)
+
+[node name="LoopPickupMarker4" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(288, 288)
+
+[node name="LoopPickupMarker5" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(480, 96)
+
+[node name="LoopPickupMarker6" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(480, -96)
+
+[node name="LoopPickupMarker7" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-480, -96)
+
+[node name="LoopPickupMarker8" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-480, 104)
+
+[node name="LoopPickupMarker9" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-288, -288)
+
+[node name="LoopPickupMarker10" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(288, -288)
+
+[node name="LoopPickupMarker11" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(96, -480)
+
+[node name="LoopPickupMarker12" parent="Markers" instance=ExtResource("6_ktuoy")]
+position = Vector2(-104, -480)
