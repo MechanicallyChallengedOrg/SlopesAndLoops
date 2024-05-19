@@ -21,3 +21,14 @@ class_name DebugScene extends Control
 @onready var input: CheckButton = $TopLeft/VBox/Input
 @onready var player_input: Label = $TopLeft/VBox/PlayerInput
 
+@onready var bgm_value: Label = $TopLeft/VBox/BGM/Value
+@onready var bgm_slider: HSlider = $TopLeft/VBox/BGM/Slider
+@onready var sfx_value: Label = $TopLeft/VBox/SFX/Value
+@onready var sfx_slider: HSlider = $TopLeft/VBox/SFX/Slider
+@onready var master_value: Label = $TopLeft/VBox/Master/Value
+@onready var master_slider: HSlider = $TopLeft/VBox/Master/Slider
+
+func _ready() -> void:
+  bgm_slider.value_changed.connect(__audio.on_bgm_volume_changed.bind(bgm_value))
+  sfx_slider.value_changed.connect(__audio.on_sfx_volume_changed.bind(sfx_value))
+  master_slider.value_changed.connect(__audio.on_master_volume_changed.bind(master_value))

@@ -28,6 +28,3 @@ enum BIT_LAYER {
   Loop = 8,
   Death = 16
 }
-
-const VOLUME_BGM := 25.0
-const VOLUME_SFX := 40.0

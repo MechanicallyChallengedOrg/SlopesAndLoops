@@ -24,6 +24,81 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Gohddo't Godoht FAST"
 
+[node name="Master" type="HBoxContainer" parent="TopLeft/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TopLeft/VBox/Master"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Master"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TopLeft/VBox/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+rounded = true
+
+[node name="Value" type="Label" parent="TopLeft/VBox/Master"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "50
+"
+
+[node name="BGM" type="HBoxContainer" parent="TopLeft/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TopLeft/VBox/BGM"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "BGM"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TopLeft/VBox/BGM"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+rounded = true
+
+[node name="Value" type="Label" parent="TopLeft/VBox/BGM"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "50
+"
+
+[node name="SFX" type="HBoxContainer" parent="TopLeft/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TopLeft/VBox/SFX"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SFX
+"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TopLeft/VBox/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+rounded = true
+
+[node name="Value" type="Label" parent="TopLeft/VBox/SFX"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "50
+"
+
 [node name="Telemetry" type="CheckButton" parent="TopLeft/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20

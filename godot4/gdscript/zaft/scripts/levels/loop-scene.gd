@@ -47,16 +47,13 @@ func on_body_entered_activation_zone(_p:PlayerCharacterScene):
 func on_body_entered_deactivation_zone(_p:PlayerCharacterScene, b:LoopyStaticBody2D):
   b.disable_loop_collision()
 
-func enable_left_wall(): if wall_left_body != null: wall_left_body.enable_loop_collision()
-func enable_right_wall(): if wall_right_body != null: wall_right_body.enable_loop_collision()
-func disable_left_wall(): if wall_left_body != null: wall_left_body.disable_loop_collision()
-func disable_right_wall(): if wall_right_body != null: wall_right_body.disable_loop_collision()
-
 func on_marker_timed_out():
   activation_zone.monitoring = true
 
 func on_last_marker_picked_up(p:PlayerCharacterScene):
   activation_zone.monitoring = false
+  # Here we check which direction the player is going to determine which wall
+  # of the loop to open. Sadly this would break if you create a loop that is completely sideways
   if p.velocity.x > 0: wall_right_body.disable_loop_collision()
   if p.velocity.x < 0: wall_left_body.disable_loop_collision()
   get_tree().create_timer(1).timeout.connect(func (): activation_zone.monitoring = true, CONNECT_ONE_SHOT)
@@ -73,6 +70,11 @@ func setup_zone_signals():
   activation_zone.body_entered.connect(on_body_entered_activation_zone)
   deactivation_zone_right.body_entered.connect(on_body_entered_deactivation_zone.bind(wall_right_body))
   deactivation_zone_left.body_entered.connect(on_body_entered_deactivation_zone.bind(wall_left_body))
+
+func enable_left_wall(): if wall_left_body != null: wall_left_body.enable_loop_collision()
+func enable_right_wall(): if wall_right_body != null: wall_right_body.enable_loop_collision()
+func disable_left_wall(): if wall_left_body != null: wall_left_body.disable_loop_collision()
+func disable_right_wall(): if wall_right_body != null: wall_right_body.disable_loop_collision()
 
 func _ready() -> void:
   add_child(bodies)

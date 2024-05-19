@@ -31,18 +31,17 @@ func reset_markers():
   quantity_picked_up = 0
   for m : LoopPickupMarkerScene in get_children(): setup_single_marker(m)
 
-func _ready() -> void: reset_markers()
+func _ready() -> void:
+  reset_markers()
+  for m : LoopPickupMarkerScene in get_children():
+    m.area.body_entered.connect(on_player_picked_up.bind(m))
 
 func setup_single_marker(m:LoopPickupMarkerScene):
   m.visible = true
   m.area.monitoring = true
-  # CONNECT_ONE_SHOT is very important in a situation like this,
-  # whenever you connect from a signal from within another signal (or player input)
-  # you most likely want to use a "one shot" flag, otherwise you will end up
-  # accumulating more and more and more connected listeners every time this goes through
-  m.area.body_entered.connect(on_player_picked_up.bind(m), CONNECT_ONE_SHOT)
 
 func pick_single_marker(m:LoopPickupMarkerScene):
+  __audio.play_sfx(__audio.SFX_COIN, 1.0 + (0.02 * quantity_picked_up))
   quantity_picked_up += 1
   m.visible = false
   m.area.set_deferred('monitoring', true)
