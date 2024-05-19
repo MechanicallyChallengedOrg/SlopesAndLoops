@@ -1,6 +1,8 @@
 # Mechanically Challenged Slopes and Loops
 
-Check it on [itch.io](https://zafteer.itch.io/)
+![](https://github.com/zaftnotameni/SlopesAndLoops/blob/main/godot4/gdscript/zaft/assets/loop.gif?raw=true)
+
+Check it on [itch.io](https://zafteer.itch.io/dr-godotnic-is-mechanically-challenged)
 
 ## About
 
