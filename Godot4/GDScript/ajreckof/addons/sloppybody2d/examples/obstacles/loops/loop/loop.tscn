@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw3tiwbvdpl1i"]
+
+[ext_resource type="Script" path="res://addons/sloppybody2d/layered_static_obstacle.gd" id="1_8854s"]
+[ext_resource type="Script" path="res://addons/sloppybody2d/examples/obstacles/loops/loop/loop.gd" id="1_w7w4m"]
+[ext_resource type="Script" path="res://addons/sloppybody2d/transition_area.gd" id="3_q0ftt"]
+
+[sub_resource type="Curve2D" id="Curve2D_um1d0"]
+_data = {
+"points": PackedVector2Array(0, 0, 2.08165e-12, 2.08165e-12, -208, 128, 0, 0, 164.286, 2.08165e-12, -128, 128, -0.679494, 128.327, 0, 0, 64, -64, 0, 0, 0.169873, -24.236, 64, -128, 40.179, 0.0733193, 0, 0, 16, -192, 0, 0, 0, 0, -16, -192)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ym61"]
+size = Vector2(16, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_qd1tm"]
+_data = {
+"points": PackedVector2Array(0, 0, 2.08165e-12, 2.08165e-12, 16, -192, 2.94389e-12, -1.91156e-25, -32.0584, 2.08165e-12, -16, -192, -0.115151, -32.0251, 1.05851e-14, 2.94387e-12, -64, -128, 0, 0, -0.710888, 127.606, -64, -64, -164.286, 2.08165e-12, 2.08165e-12, 2.08165e-12, 128, 128, 0, 0, 0, 0, 208, 128)
+}
+point_count = 6
+
+[node name="Loop" type="Node2D"]
+script = ExtResource("1_w7w4m")
+left_entry_layer = 1
+right_entry_layer = 2
+
+[node name="LeftPart" type="StaticBody2D" parent="."]
+z_index = -1
+script = ExtResource("1_8854s")
+curve = SubResource("Curve2D_um1d0")
+layer = 1
+
+[node name="Switcher" type="Area2D" parent="."]
+position = Vector2(0, -160)
+collision_mask = 3
+script = ExtResource("3_q0ftt")
+direction = Vector2(-16, 0)
+entry_layer = 1
+exit_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switcher"]
+shape = SubResource("RectangleShape2D_1ym61")
+
+[node name="RightPart" type="StaticBody2D" parent="."]
+z_index = -2
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8854s")
+curve = SubResource("Curve2D_qd1tm")
+layer = 2

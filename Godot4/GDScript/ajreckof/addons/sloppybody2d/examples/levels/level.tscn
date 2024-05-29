@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://be2qfjusumggl"]
+
+[ext_resource type="Script" path="res://addons/sloppybody2d/examples/jumping_slope_body_2d.gd" id="1_7njqa"]
+[ext_resource type="Script" path="res://addons/sloppybody2d/layered_static_obstacle.gd" id="1_bdib3"]
+[ext_resource type="Texture2D" uid="uid://k3oc6dieloe" path="res://icon.svg" id="2_lb13e"]
+[ext_resource type="PackedScene" uid="uid://bw3tiwbvdpl1i" path="res://addons/sloppybody2d/examples/obstacles/loops/loop/loop.tscn" id="4_xdir4"]
+[ext_resource type="Script" path="res://addons/sloppybody2d/transition_area.gd" id="6_xhyiu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4nyl"]
+radius = 16.0
+
+[sub_resource type="Curve2D" id="Curve2D_t2u1k"]
+_data = {
+"points": PackedVector2Array(-66.998, 0.814035, 66.998, -0.814035, 1527, 640, 0, 0, 0, 0, 1616, 640, -43.3917, 3.03368, 43.3917, -3.03368, 1822, 648, 0, 0, 0, 0, 1904, 640)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_fgxgd"]
+_data = {
+"points": PackedVector2Array(-127.278, 4.9718, 127.278, -4.9718, -150, -43, -189.378, 3.93172, 189.378, -3.93172, 496, 5, 0, 0, 0, 0, 800, 5, 0, 0, 0, 0, 800, -1019, 0, 0, 0, 0, -2272, -1019, 0, 0, 0, 0, -2272, -59, 0, 0, 0, 0, -1200, -59)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_tvsob"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 384, -192, 0, 0, 0, 0, 2880, -192, 0, 0, 0, 0, 2880, 544, 0, 0, 0, 0, 3072, 544)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v0ex"]
+size = Vector2(20, 400)
+
+[sub_resource type="Curve2D" id="Curve2D_k5ojg"]
+_data = {
+"points": PackedVector2Array(-97.6177, 8.4885, 97.6177, -8.4885, 1820, 648, -31.6969, 41.291, 31.6969, -41.291, 1969, 598, -0.17764, 106.604, 0.17764, -106.604, 1984, 368, -59.1622, -0.508642, 59.1622, 0.508642, 2048, 192, -3.17405, -117.44, 3.17405, 117.44, 2112, 368, -17.6144, -42.436, 17.6144, 42.436, 2112, 570, -65.0935, 0.22242, 65.0935, -0.22242, 2250, 656)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_8xrst"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -72, -16, 0, 0, 0, 0, 136, -16)
+}
+point_count = 2
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(637.087, 581.35)
+motion_mode = 1
+up_direction = Vector2(0.00881023, -0.999961)
+velocity = Vector2(32.4684, 178.885)
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 3.14159
+floor_snap_length = 4.0
+script = ExtResource("1_7njqa")
+layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_i4nyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.25, 0.26)
+texture = ExtResource("2_lb13e")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="FloorLinks" type="Node2D" parent="."]
+
+[node name="LayeredStaticObstacle3" type="StaticBody2D" parent="FloorLinks"]
+z_index = -1
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_t2u1k")
+layer = 1
+
+[node name="LayeredStaticObstacle2" type="StaticBody2D" parent="FloorLinks"]
+z_index = -1
+position = Vector2(2400, 699)
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_fgxgd")
+layer = 1
+
+[node name="LayeredStaticObstacle4" type="StaticBody2D" parent="FloorLinks"]
+z_index = -1
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_tvsob")
+layer = 1
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Loop" parent="Obstacles" instance=ExtResource("4_xdir4")]
+position = Vector2(1408, 512)
+
+[node name="LayerPlayerChanger3" type="Area2D" parent="Obstacles/Loop"]
+position = Vector2(152, 64)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_xhyiu")
+direction = Vector2(32, 0)
+entry_layer = 2
+exit_layer = 1
+
+[node name="Area2D" type="CollisionShape2D" parent="Obstacles/Loop/LayerPlayerChanger3"]
+position = Vector2(0, -136)
+shape = SubResource("RectangleShape2D_4v0ex")
+
+[node name="Mountain" type="StaticBody2D" parent="Obstacles"]
+z_index = -1
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_k5ojg")
+layer = 1
+
+[node name="steps" type="Node2D" parent="Obstacles"]
+
+[node name="LayeredStaticObstacle" type="StaticBody2D" parent="Obstacles/steps"]
+z_index = -1
+position = Vector2(3080, 400)
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_8xrst")
+layer = 1
+
+[node name="LayeredStaticObstacle3" type="StaticBody2D" parent="Obstacles/steps"]
+z_index = -1
+position = Vector2(2936, 240)
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_8xrst")
+layer = 1
+
+[node name="LayeredStaticObstacle2" type="StaticBody2D" parent="Obstacles/steps"]
+z_index = -1
+position = Vector2(3080, 80)
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_8xrst")
+layer = 1
+
+[node name="LayeredStaticObstacle4" type="StaticBody2D" parent="Obstacles/steps"]
+z_index = -1
+position = Vector2(2936, -80)
+script = ExtResource("1_bdib3")
+curve = SubResource("Curve2D_8xrst")
+layer = 1
