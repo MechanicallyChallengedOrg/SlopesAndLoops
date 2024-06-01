@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee575c0f9f5114c4b9478c4d3d6dad21, type: 3}
+  m_Name: Sonic-Like
+  m_EditorClassIdentifier: 
+  <WidthRadius>k__BackingField: 0.2
+  <HeightRadius>k__BackingField: 0.4
+  <GroundCheckDistance>k__BackingField: 0.4
+  <Gravity>k__BackingField: 0.41875
+  <TopSpeed>k__BackingField: 0.8
+  <AccelerationSpeed>k__BackingField: 0.0086
+  <DecelerationSpeed>k__BackingField: 0.01
+  <FrictionSpeed>k__BackingField: 0.0066
+  <SpeedModifier>k__BackingField: 25
+  <SlopeFactor>k__BackingField: 0.025
+  <JumpForce>k__BackingField: 0.1
+  <StickySpeed>k__BackingField: 0.1
