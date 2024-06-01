@@ -5,6 +5,12 @@ This project was an exercise in biting off more than you can chew. But there is 
 
 The system used is based on the way the original Sonic the Hedgehog games worked, which is explained in great detail over at [Sonic Retro](https://info.sonicretro.org/SPG:Basics).
 
+Special thanks to GTExperience, Zaftnotameni, and db9Dreamer who were constant companions in stream chat and full of helpful observations and advice while I attempted this challenge.
+
+## How to Play
+
+A/D to move left and right. Thassit.
+
 ## How to Use
 
 You should be able to drop the files within the "b3agz" folder of this repo into your project, open the demo scene, and test it out. No special setting up of the project or adding of external dependencies should be necessary.
