@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsx7krl275h86"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_auwbs"]
+
+[sub_resource type="Environment" id="Environment_qaqyd"]
+background_mode = 3
+background_canvas_max_layer = 20
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.5
+glow_hdr_threshold = 0.8
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_auwbs")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="Level" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Pickups" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Debug" type="CanvasLayer" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qaqyd")

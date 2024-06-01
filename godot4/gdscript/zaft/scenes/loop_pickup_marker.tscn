@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://btsvpxkdd4wfg"]
+
+[ext_resource type="Script" path="res://scripts/loop-pickup-marker-scene.gd" id="1_66p5t"]
+[ext_resource type="Shader" path="res://shaders/pickup-shader.gdshader" id="2_qks6e"]
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="2_qlhmo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ir2ey"]
+shader = ExtResource("2_qks6e")
+shader_parameter/bobbing_amplitude = Vector2(0, 5)
+shader_parameter/bobbing_speed = Vector2(0, 10)
+shader_parameter/spinning_speed = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84x2x"]
+size = Vector2(32, 32)
+
+[node name="LoopPickupMarker" type="Node2D"]
+script = ExtResource("1_66p5t")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ir2ey")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qlhmo")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_84x2x")

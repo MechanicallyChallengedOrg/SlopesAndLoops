@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkn25m1mglb26"]
+
+[ext_resource type="Script" path="res://scripts/levels/loop-scene.gd" id="2_b7o20"]
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_skivs"]
+[ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_aj5r7"]
+[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="4_utdq0"]
+[ext_resource type="PackedScene" uid="uid://btsvpxkdd4wfg" path="res://scenes/loop_pickup_marker.tscn" id="5_vwogp"]
+[ext_resource type="Script" path="res://scripts/loop-pickup-markers-node.gd" id="5_w07j6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
+shader = ExtResource("4_utdq0")
+shader_parameter/alpha_multiplier = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuexh"]
+resource_local_to_scene = true
+shader = ExtResource("4_utdq0")
+shader_parameter/alpha_multiplier = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2r7s"]
+resource_local_to_scene = true
+shader = ExtResource("4_utdq0")
+shader_parameter/alpha_multiplier = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nedja"]
+size = Vector2(128, 1152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu4h6"]
+size = Vector2(128, 1280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60uon"]
+size = Vector2(128, 1280)
+
+[node name="Loop" type="Node2D"]
+material = SubResource("ShaderMaterial_sjhay")
+script = ExtResource("2_b7o20")
+
+[node name="Polygons" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Floor" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(0, 384)
+texture = ExtResource("3_skivs")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-2560, 128, -2560, 256, 2560, 256, 2560, 128)
+
+[node name="Ceiling" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(0, -768)
+texture = ExtResource("3_skivs")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-640, 128, -640, 256, 640, 256, 640, 128)
+
+[node name="WallRight" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_tuexh")
+texture = ExtResource("3_skivs")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(128, -512, 512, -128.683, 512, 128, 128, 512, 640, 512, 640, -512)
+
+[node name="WallLeft" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b2r7s")
+texture = ExtResource("3_skivs")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-640, -512, -640, 512, -128, 512, -512, 126.873, -512, -131.282, -128, -512)
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_aj5r7")]
+position = Vector2(-1568, 8)
+
+[node name="WallActivationZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallActivationZone"]
+shape = SubResource("RectangleShape2D_nedja")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -200.0
+offset_top = 104.0
+offset_right = 198.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 24
+text = "Unlike the prison scene,
+This loop has logic setup
+so the walls are enabled/disabled
+at the correct moment.
+So the player can come in and out."
+
+[node name="WallDeactivationZoneLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneLeft"]
+position = Vector2(-704, 0)
+shape = SubResource("RectangleShape2D_iu4h6")
+
+[node name="WallDeactivationZoneRight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDeactivationZoneRight"]
+position = Vector2(704, 0)
+shape = SubResource("RectangleShape2D_60uon")
+
+[node name="Markers" type="Node2D" parent="."]
+script = ExtResource("5_w07j6")
+
+[node name="LoopPickupMarker" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(96, 480)
+
+[node name="LoopPickupMarker2" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-96, 480)
+
+[node name="LoopPickupMarker3" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-288, 288)
+
+[node name="LoopPickupMarker4" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(288, 288)
+
+[node name="LoopPickupMarker5" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(480, 96)
+
+[node name="LoopPickupMarker6" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(480, -96)
+
+[node name="LoopPickupMarker7" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-480, -96)
+
+[node name="LoopPickupMarker8" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-480, 104)
+
+[node name="LoopPickupMarker9" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-288, -288)
+
+[node name="LoopPickupMarker10" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(288, -288)
+
+[node name="LoopPickupMarker11" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(96, -480)
+
+[node name="LoopPickupMarker12" parent="Markers" instance=ExtResource("5_vwogp")]
+position = Vector2(-104, -480)

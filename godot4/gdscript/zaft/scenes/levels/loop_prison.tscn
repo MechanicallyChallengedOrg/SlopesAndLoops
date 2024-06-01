@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://ih6x3irfv763"]
+
+[ext_resource type="Shader" path="res://shaders/floor-shader.gdshader" id="1_icjgw"]
+[ext_resource type="Script" path="res://scripts/levels/loop-prison-scene.gd" id="2_vowjo"]
+[ext_resource type="Texture2D" uid="uid://dm05le0o5xj5o" path="res://assets/icon.svg" id="3_6g1xm"]
+[ext_resource type="PackedScene" uid="uid://k2xryprl8n1o" path="res://scenes/player_spawner.tscn" id="4_g5ep0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjhay"]
+shader = ExtResource("1_icjgw")
+shader_parameter/alpha_multiplier = 1.0
+
+[node name="LoopPrison" type="Node2D"]
+material = SubResource("ShaderMaterial_sjhay")
+script = ExtResource("2_vowjo")
+
+[node name="Polygons" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Floor" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(0, 384)
+texture = ExtResource("3_6g1xm")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-1280, 128, -1280, 256, 1280, 256, 1280, 128)
+
+[node name="Ceiling" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(0, -768)
+texture = ExtResource("3_6g1xm")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-512, 128, -512, 256, 512, 256, 512, 128)
+
+[node name="WallRight" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+texture = ExtResource("3_6g1xm")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(128, -512, 512, -128.683, 512, 128, 128, 512, 640, 512, 640, -512)
+
+[node name="WallLeft" type="Polygon2D" parent="Polygons"]
+texture_repeat = 2
+use_parent_material = true
+texture = ExtResource("3_6g1xm")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-640, -512, -640, 512, -128, 512, -512, 126.873, -512, -131.282, -128, -512)
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_g5ep0")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -160.0
+offset_top = 128.0
+offset_right = 176.0
+offset_bottom = 384.0
+theme_override_font_sizes/font_size = 24
+text = "This is a loop
+with no logic setup.
+There's no way
+for the player to leave.
+Here to show what
+can go wrong when
+implementing this mechanic."

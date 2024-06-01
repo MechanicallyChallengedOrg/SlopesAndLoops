@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://k2xryprl8n1o"]
+
+[ext_resource type="Script" path="res://scripts/player/spawner-scene.gd" id="1_a41h0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4r4ak"]
+
+[node name="PlayerSpawner" type="Node2D"]
+script = ExtResource("1_a41h0")
+
+[node name="Death" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
+position = Vector2(0, 640)
+shape = SubResource("WorldBoundaryShape2D_4r4ak")
