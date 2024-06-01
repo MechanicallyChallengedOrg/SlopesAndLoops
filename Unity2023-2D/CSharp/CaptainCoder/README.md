@@ -102,6 +102,18 @@ private void SetPlayerUp(Vector2 newUp)
 }
 ```
 
+`ClearGround()` resets the player's up and right.
+
+```csharp
+private void ClearGround()
+{
+    // Reset the player's Up and Right
+    Up = Vector2.up;
+    Right = Vector2.right;
+    transform.rotation = Quaternion.Euler(0, 0, 0);
+}
+```
+
 `SnapTo` ensures that the player is touching the ground.
 
 ```csharp
